@@ -12,7 +12,7 @@
       margin: 0;
       padding: 0;
       text-align: center;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     .logo {
@@ -83,14 +83,12 @@
       background: #e50064;
     }
 
-    #confetti {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 9999;
+    .alt-yazi {
+      margin: 60px 0 30px 0;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 2px 2px 4px #000;
     }
   </style>
 </head>
@@ -111,81 +109,9 @@
 
   <button id="hediyeBtn" onclick="window.location.href='https://p.site';">İreme Hediye 🎁</button>
 
-  <canvas id="confetti"></canvas>
-
-  <script>
-    const canvas = document.getElementById('confetti');
-    const ctx = canvas.getContext('2d');
-
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
-
-    let confettis = [];
-
-    function randomRange(min, max) {
-      return Math.random() * (max - min) + min;
-    }
-
-    function createConfetti() {
-      const colors = ['#ff4081', '#ffeb3b', '#00e676', '#2979ff', '#ff6d00'];
-      const confettiCount = 150;
-      confettis = [];
-      for (let i = 0; i < confettiCount; i++) {
-        confettis.push({
-          x: randomRange(0, canvas.width),
-          y: randomRange(0, canvas.height),
-          size: randomRange(5, 10),
-          color: colors[Math.floor(Math.random() * colors.length)],
-          speedX: randomRange(-5, 5),
-          speedY: randomRange(-15, -5),
-          gravity: 0.5,
-          opacity: 1,
-          decay: randomRange(0.02, 0.04)
-        });
-      }
-    }
-
-    function updateConfetti() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      let activeCount = 0;
-      confettis.forEach(c => {
-        c.x += c.speedX;
-        c.y += c.speedY;
-        c.speedY += c.gravity;
-        c.opacity -= c.decay;
-        if (c.opacity > 0) {
-          activeCount++;
-          ctx.fillStyle = `rgba(${hexToRgb(c.color)},${c.opacity})`;
-          ctx.beginPath();
-          ctx.arc(c.x, c.y, c.size, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      });
-      if (activeCount > 0) {
-        requestAnimationFrame(updateConfetti);
-      } else {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        canvas.style.display = 'none';
-      }
-    }
-
-    function hexToRgb(hex) {
-      hex = hex.replace('#', '');
-      const bigint = parseInt(hex, 16);
-      const r = (bigint >> 16) & 255;
-      const g = (bigint >> 8) & 255;
-      const b = bigint & 255;
-      return `${r},${g},${b}`;
-    }
-
-    // Konfeti başlat
-    createConfetti();
-    updateConfetti();
-  </script>
+  <div class="alt-yazi">
+    SENİ ÇOK SEVİYORUM İREMCİM
+  </div>
 
 </body>
 </html>
