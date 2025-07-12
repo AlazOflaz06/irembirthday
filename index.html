@@ -4,7 +4,7 @@
     <title>İrem'in Doğum Günü</title>
     <style>
         body {
-            font-family: 'Comic Sans MS', cursive;
+            font-family: sans-serif;
             text-align: center;
             background: url('https://i.pinimg.com/originals/31/c5/03/31c503e8a4a8205fdc2bf0a76374507e.jpg') no-repeat center center fixed;
             background-size: cover;
@@ -47,8 +47,8 @@
             50% { transform: translateY(-30px); }
         }
         .foto {
-            width: 200px;
-            height: 200px;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             border: 5px solid #ffeb3b;
             margin: 0 auto;
@@ -58,12 +58,11 @@
     </style>
 </head>
 <body>
-    <!-- Kalp içinde İ logosu -->
     <div class="logo">❤️ İ</div>
     
     <h1>🎉 İrem, Kardeşim Doğum Günün Kutlu Olsun! 🎉</h1>
     
-    <!-- Kişisel fotoğraf (URL'yi değiştirin) -->
+    <!-- Kişisel fotoğraf (gönderdiğin resim) -->
     <img src="https://i.imgur.com/JqYeYnW.jpg" alt="İrem" class="foto">
     
     <div class="balon">🎈</div>
@@ -75,13 +74,11 @@
         <p>Seni çok seviyorum, iyi ki doğdun, iyi ki varsın! ❤️</p>
     </div>
 
-    <!-- Otomatik çalan müzik (URL'yi değiştirebilirsiniz) -->
     <audio autoplay loop>
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
     </audio>
 
     <script>
-        // Balon yağmuru efekti
         setInterval(() => {
             const balon = document.createElement('div');
             balon.innerHTML = '🎈';
@@ -92,7 +89,6 @@
             balon.style.animation = `float ${Math.random() * 3 + 2}s linear infinite`;
             document.body.appendChild(balon);
             
-            // Balonların yukarı hareketi
             let pos = window.innerHeight;
             const fly = setInterval(() => {
                 pos -= 2;
