@@ -15,18 +15,24 @@
             flex-direction: column;
             justify-content: center;
             text-shadow: 2px 2px 4px #000;
+            overflow-x: hidden;
         }
         .logo {
-            font-size: 50px;
-            color: #ff4081;
+            font-size: 30px;
+            color: #00e5ff;
             margin-bottom: 20px;
-            text-shadow: 0 0 10px #fff;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: slideIn 1s ease-out 0.3s forwards;
         }
         h1 {
             color: #ffeb3b;
             font-size: 2.5rem;
             margin: 10px 0;
             text-shadow: 3px 3px 0 #ff4081;
+            opacity: 0;
+            transform: translateX(-100%);
+            animation: slideInFromLeft 1s ease-out 0.5s forwards;
         }
         .message {
             background: rgba(0, 0, 0, 0.7);
@@ -36,36 +42,56 @@
             max-width: 80%;
             font-size: 1.3rem;
             line-height: 1.6;
-        }
-        .balon {
-            font-size: 60px;
-            animation: float 3s ease-in-out infinite;
-            margin: 20px 0;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-30px); }
+            opacity: 0;
+            transform: translateX(100%);
+            animation: slideInFromRight 1s ease-out 1s forwards;
         }
         .foto {
             width: 250px;
             height: 250px;
             border-radius: 50%;
             border: 5px solid #ffeb3b;
-            margin: 0 auto;
+            margin: 20px auto;
             object-fit: cover;
             box-shadow: 0 0 20px #ff4081;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: fadeIn 1s ease-out 1.5s forwards;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideInFromLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes slideInFromRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
     </style>
 </head>
 <body>
+
     <div class="logo">Tasarlayan Alaz Oflaz</div>
     
     <h1>🎉 İrem, Kardeşim Doğum Günün Kutlu Olsun! 🎉</h1>
     
-    <!-- Doğru resim linki -->
     <img src="https://i.imgur.com/mUg6G6Y.jpeg" alt="İrem" class="foto">
-    
-    <div class="balon">🎈</div>
     
     <div class="message">
         <p>Bu doğum gününde yanında olamadım ama</p>
@@ -78,27 +104,5 @@
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
     </audio>
 
-    <script>
-        setInterval(() => {
-            const balon = document.createElement('div');
-            balon.innerHTML = '🎈';
-            balon.style.position = 'fixed';
-            balon.style.fontSize = (Math.random() * 30 + 20) + 'px';
-            balon.style.left = Math.random() * window.innerWidth + 'px';
-            balon.style.top = window.innerHeight + 'px';
-            balon.style.animation = `float ${Math.random() * 3 + 2}s linear infinite`;
-            document.body.appendChild(balon);
-            
-            let pos = window.innerHeight;
-            const fly = setInterval(() => {
-                pos -= 2;
-                balon.style.top = pos + 'px';
-                if (pos < -100) {
-                    clearInterval(fly);
-                    balon.remove();
-                }
-            }, 50);
-        }, 300);
-    </script>
 </body>
 </html>
