@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>İrem'in Doğum Günü</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            text-align: center;
+            background: url('https://i.pinimg.com/originals/31/c5/03/31c503e8a4a8205fdc2bf0a76374507e.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            padding: 20px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-shadow: 2px 2px 4px #000;
+        }
+        .logo {
+            font-size: 50px;
+            color: #ff4081;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #fff;
+        }
+        h1 {
+            color: #ffeb3b;
+            font-size: 2.5rem;
+            margin: 10px 0;
+            text-shadow: 3px 3px 0 #ff4081;
+        }
+        .message {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 20px;
+            margin: 20px auto;
+            max-width: 80%;
+            font-size: 1.3rem;
+            line-height: 1.6;
+        }
+        .balon {
+            font-size: 60px;
+            animation: float 3s ease-in-out infinite;
+            margin: 20px 0;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+        }
+        .foto {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #ffeb3b;
+            margin: 0 auto;
+            object-fit: cover;
+            box-shadow: 0 0 20px #ff4081;
+        }
+    </style>
+</head>
+<body>
+    <!-- Kalp içinde İ logosu -->
+    <div class="logo">❤️ İ</div>
+    
+    <h1>🎉 İrem, Kardeşim Doğum Günün Kutlu Olsun! 🎉</h1>
+    
+    <!-- Kişisel fotoğraf (URL'yi değiştirin) -->
+    <img src="https://i.imgur.com/JqYeYnW.jpg" alt="İrem" class="foto">
+    
+    <div class="balon">🎈</div>
+    
+    <div class="message">
+        <p>Bu doğum gününde yanında olamadım ama</p>
+        <p><strong>bir sonrakinde emin ol ki yanına gelip</strong></p>
+        <p><strong>beraber kutlayacağız!</strong></p>
+        <p>Seni çok seviyorum, iyi ki doğdun, iyi ki varsın! ❤️</p>
+    </div>
+
+    <!-- Otomatik çalan müzik (URL'yi değiştirebilirsiniz) -->
+    <audio autoplay loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Balon yağmuru efekti
+        setInterval(() => {
+            const balon = document.createElement('div');
+            balon.innerHTML = '🎈';
+            balon.style.position = 'fixed';
+            balon.style.fontSize = (Math.random() * 30 + 20) + 'px';
+            balon.style.left = Math.random() * window.innerWidth + 'px';
+            balon.style.top = window.innerHeight + 'px';
+            balon.style.animation = `float ${Math.random() * 3 + 2}s linear infinite`;
+            document.body.appendChild(balon);
+            
+            // Balonların yukarı hareketi
+            let pos = window.innerHeight;
+            const fly = setInterval(() => {
+                pos -= 2;
+                balon.style.top = pos + 'px';
+                if (pos < -100) {
+                    clearInterval(fly);
+                    balon.remove();
+                }
+            }, 50);
+        }, 300);
+    </script>
+</body>
+</html>
