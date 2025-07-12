@@ -15,24 +15,19 @@
             flex-direction: column;
             justify-content: center;
             text-shadow: 2px 2px 4px #000;
-            overflow-x: hidden;
+            overflow: hidden;
         }
         .logo {
             font-size: 30px;
             color: #00e5ff;
             margin-bottom: 20px;
-            opacity: 0;
-            transform: translateY(-20px);
-            animation: slideIn 1s ease-out 0.3s forwards;
+            text-shadow: 0 0 10px #fff;
         }
         h1 {
             color: #ffeb3b;
             font-size: 2.5rem;
             margin: 10px 0;
             text-shadow: 3px 3px 0 #ff4081;
-            opacity: 0;
-            transform: translateX(-100%);
-            animation: slideInFromLeft 1s ease-out 0.5s forwards;
         }
         .message {
             background: rgba(0, 0, 0, 0.7);
@@ -42,9 +37,6 @@
             max-width: 80%;
             font-size: 1.3rem;
             line-height: 1.6;
-            opacity: 0;
-            transform: translateX(100%);
-            animation: slideInFromRight 1s ease-out 1s forwards;
         }
         .foto {
             width: 250px;
@@ -54,34 +46,13 @@
             margin: 20px auto;
             object-fit: cover;
             box-shadow: 0 0 20px #ff4081;
-            opacity: 0;
-            transform: scale(0.8);
-            animation: fadeIn 1s ease-out 1.5s forwards;
         }
-
-        @keyframes slideIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @keyframes slideInFromLeft {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        @keyframes slideInFromRight {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 999;
         }
     </style>
 </head>
@@ -104,5 +75,54 @@
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
     </audio>
 
+    <!-- 🎊 Konfeti yağmuru -->
+    <canvas id="confetti"></canvas>
+    <script>
+        const canvas = document.getElementById('confetti');
+        const ctx = canvas.getContext('2d');
+        let pieces = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function createPiece() {
+            return {
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height - canvas.height,
+                size: Math.random() * 8 + 4,
+                color: `hsl(${Math.floor(Math.random() * 360)}, 100%, 60%)`,
+                speed: Math.random() * 3 + 2,
+                angle: Math.random() * 360
+            };
+        }
+
+        for (let i = 0; i < 150; i++) {
+            pieces.push(createPiece());
+        }
+
+        function update() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let piece of pieces) {
+                ctx.beginPath();
+                ctx.fillStyle = piece.color;
+                ctx.arc(piece.x, piece.y, piece.size, 0, 2 * Math.PI);
+                ctx.fill();
+
+                piece.y += piece.speed;
+                piece.angle += 2;
+                if (piece.y > canvas.height) {
+                    piece.y = -10;
+                    piece.x = Math.random() * canvas.width;
+                }
+            }
+            requestAnimationFrame(update);
+        }
+
+        update();
+    </script>
 </body>
 </html>
