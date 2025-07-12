@@ -1,170 +1,88 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>İrem'in Doğum Günü</title>
-<style>
-  body {
-    font-family: 'Comic Sans MS', cursive;
-    text-align: center;
-    background: url('https://i.pinimg.com/originals/31/c5/03/31c503e8a4a8205fdc2bf0a76374507e.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: #fff;
-    padding: 20px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    text-shadow: 2px 2px 4px #000;
-  }
-  .logo {
-    font-family: Arial, sans-serif;
-    font-size: 28px;
-    color: #fff;
-    margin-bottom: 20px;
-  }
-  h1 {
-    color: #ffeb3b;
-    font-size: 2.5rem;
-    margin: 10px 0 20px;
-    text-shadow: 3px 3px 0 #ff4081;
-    font-family: 'Comic Sans MS', cursive;
-  }
-  .message {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 20px;
-    margin: 20px auto;
-    max-width: 80%;
-    font-size: 1.3rem;
-    line-height: 1.6;
-  }
-  .foto {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 5px solid #ffeb3b;
-    margin: 20px auto;
-    object-fit: cover;
-    box-shadow: 0 0 20px #ff4081;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  .foto:hover {
-    transform: scale(1.05);
-  }
-  /* Kayan yazı */
-  #kayanYazi {
-    position: fixed;
-    bottom: 0; left: 100%;
-    white-space: nowrap;
-    font-size: 1.6rem;
-    padding: 10px 20px;
-    background: rgba(255, 64, 129, 0.85);
-    color: white;
-    font-weight: bold;
-    box-shadow: 0 0 20px #ff4081;
-    animation: kaydir 15s linear infinite;
-    z-index: 10000;
-    font-family: 'Arial', sans-serif;
-  }
-  @keyframes kaydir {
-    0% { left: 100%; }
-    100% { left: -100%; }
-  }
-  /* Balon animasyonu */
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-30px); }
-  }
-  .balon {
-    position: fixed;
-    font-size: 60px;
-    animation: float 3s ease-in-out infinite;
-    pointer-events: none;
-    user-select: none;
-    z-index: 9999;
-  }
-  /* Konfeti canvas */
-  #confetti {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 9998;
-  }
-  /* Müzik kontrol butonu */
-  #musicControl {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    background: rgba(0,0,0,0.6);
-    border: none;
-    padding: 10px 15px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1rem;
-    color: #fff;
-    box-shadow: 0 0 12px #ff4081;
-    z-index: 10000;
-  }
-  #musicControl:hover {
-    background: rgba(0,0,0,0.9);
-  }
-  /* Mum efekti */
-  #mum {
-    position: fixed;
-    top: 10vh;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 50px;
-    background: #fff3e0;
-    border-radius: 5px;
-    box-shadow: 0 0 15px 5px #ffca28;
-    z-index: 10000;
-  }
-  #mumAlev {
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 25px;
-    background: radial-gradient(circle at center, #ffeb3b 0%, #ff6f00 60%, transparent 80%);
-    border-radius: 50% 50% 50% 50%;
-    filter: drop-shadow(0 0 5px #ffb300);
-    animation: alevYanar 1.5s infinite alternate ease-in-out;
-  }
-  @keyframes alevYanar {
-    0% { transform: translateX(-50%) translateY(0) scale(1); opacity: 1; }
-    100% { transform: translateX(-50%) translateY(-5px) scale(1.1); opacity: 0.7; }
-  }
-  /* Hediye Butonu */
-  #hediyeBtn {
-    position: fixed;
-    bottom: 60px;
-    right: 15px;
-    background: #ff4081;
-    border: none;
-    padding: 15px 25px;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 30px;
-    cursor: pointer;
-    box-shadow: 0 0 15px #ff4081;
-    z-index: 10000;
-    transition: background 0.3s;
-  }
-  #hediyeBtn:hover {
-    background: #e50064;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>İrem'in Doğum Günü</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      background-color: #888888;
+      color: #fff;
+      padding: 20px;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      text-shadow: 2px 2px 4px #000;
+    }
+    .logo {
+      font-family: Arial, sans-serif;
+      font-size: 28px;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    h1 {
+      color: #ffeb3b;
+      font-size: 2.5rem;
+      margin: 10px 0 20px;
+      text-shadow: 3px 3px 0 #ff4081;
+    }
+    .message {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 20px;
+      margin: 20px auto;
+      max-width: 80%;
+      font-size: 1.3rem;
+      line-height: 1.6;
+    }
+    .foto {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 5px solid #ffeb3b;
+      margin: 20px auto;
+      object-fit: cover;
+      box-shadow: 0 0 20px #ff4081;
+      transition: transform 0.3s ease;
+    }
+    .foto:hover {
+      transform: scale(1.05);
+    }
+    #hediyeBtn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #ff4081;
+      border: none;
+      padding: 15px 25px;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ff4081;
+      z-index: 10000;
+      transition: background 0.3s;
+    }
+    #hediyeBtn:hover {
+      background: #e50064;
+    }
+    #confetti {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9999;
+    }
+  </style>
 </head>
 <body>
 
@@ -172,7 +90,7 @@
 
   <h1>🎉 İrem, Kardeşim Doğum Günün Kutlu Olsun! 🎉</h1>
 
-  <img src="https://i.imgur.com/mUg6G6Y.jpeg" alt="İrem" class="foto" id="foto">
+  <img src="https://i.imgur.com/mUg6G6Y.jpeg" alt="İrem" class="foto">
 
   <div class="message">
     <p>Bu doğum gününde yanında olamadım ama</p>
@@ -181,110 +99,83 @@
     <p>Seni çok seviyorum, iyi ki doğdun, iyi ki varsın! ❤️</p>
   </div>
 
-  <!-- Mum -->
-  <div id="mum">
-    <div id="mumAlev"></div>
-  </div>
+  <button id="hediyeBtn" onclick="window.location.href='https://p.site';">İreme Hediye 🎁</button>
 
-  <!-- Kayan yazı -->
-  <div id="kayanYazi">İrem’in doğum günü kutlu olsun! Seni çok seviyoruz! 🎂🎁🎈</div>
-
-  <!-- Müzik kontrol -->
-  <button id="musicControl">Müziği Kapat</button>
-
-  <!-- Hediye Butonu -->
-  <button id="hediyeBtn" onclick="alert('İrem’e harika bir hediye seçtin! 🎁')">İreme Hediye 🎁</button>
-
-  <!-- Konfeti -->
   <canvas id="confetti"></canvas>
 
-  <audio id="muzik" autoplay loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg" />
-  </audio>
+  <script>
+    const canvas = document.getElementById('confetti');
+    const ctx = canvas.getContext('2d');
 
-<script>
-  // Balon Yağmuru
-  setInterval(() => {
-    const balon = document.createElement('div');
-    balon.className = 'balon';
-    balon.style.left = Math.random() * window.innerWidth + 'px';
-    balon.style.fontSize = (Math.random() * 30 + 20) + 'px';
-    balon.textContent = '🎈';
-    document.body.appendChild(balon);
-
-    let pos = window.innerHeight;
-    const fly = setInterval(() => {
-      pos -= 2;
-      balon.style.top = pos + 'px';
-      if (pos < -100) {
-        clearInterval(fly);
-        balon.remove();
-      }
-    }, 50);
-  }, 300);
-
-  // Müzik kontrol
-  const muzik = document.getElementById('muzik');
-  const musicControl = document.getElementById('musicControl');
-  let muzikCalisiyor = true;
-  musicControl.addEventListener('click', () => {
-    if (muzikCalisiyor) {
-      muzik.pause();
-      musicControl.textContent = "Müziği Aç";
-      muzikCalisiyor = false;
-    } else {
-      muzik.play();
-      musicControl.textContent = "Müziği Kapat";
-      muzikCalisiyor = true;
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     }
-  });
+    window.addEventListener('resize', resize);
+    resize();
 
-  // Konfeti efekti
-  const canvas = document.getElementById('confetti');
-  const ctx = canvas.getContext('2d');
-  let pieces = [];
+    let confettis = [];
 
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  window.addEventListener('resize', resizeCanvas);
-  resizeCanvas();
+    function randomRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
 
-  function createPiece() {
-    return {
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height - canvas.height,
-      size: Math.random() * 8 + 4,
-      color: `hsl(${Math.floor(Math.random() * 360)}, 100%, 60%)`,
-      speed: Math.random() * 3 + 2,
-      angle: Math.random() * 360
-    };
-  }
-
-  for (let i = 0; i < 150; i++) {
-    pieces.push(createPiece());
-  }
-
-  function update() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let piece of pieces) {
-      ctx.beginPath();
-      ctx.fillStyle = piece.color;
-      ctx.arc(piece.x, piece.y, piece.size, 0, 2 * Math.PI);
-      ctx.fill();
-
-      piece.y += piece.speed;
-      piece.angle += 2;
-      if (piece.y > canvas.height) {
-        piece.y = -10;
-        piece.x = Math.random() * canvas.width;
+    function createConfetti() {
+      const colors = ['#ff4081', '#ffeb3b', '#00e676', '#2979ff', '#ff6d00'];
+      const confettiCount = 150;
+      confettis = [];
+      for (let i = 0; i < confettiCount; i++) {
+        confettis.push({
+          x: randomRange(0, canvas.width),
+          y: randomRange(0, canvas.height),
+          size: randomRange(5, 10),
+          color: colors[Math.floor(Math.random() * colors.length)],
+          speedX: randomRange(-5, 5),
+          speedY: randomRange(-15, -5),
+          gravity: 0.5,
+          opacity: 1,
+          decay: randomRange(0.05, 0.1),
+        });
       }
     }
-    requestAnimationFrame(update);
-  }
-  update();
-</script>
+
+    function updateConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      let activeCount = 0;
+      confettis.forEach(c => {
+        c.x += c.speedX;
+        c.y += c.speedY;
+        c.speedY += c.gravity;
+        c.opacity -= c.decay;
+        if (c.opacity > 0) {
+          activeCount++;
+          ctx.fillStyle = `rgba(${hexToRgb(c.color)},${c.opacity})`;
+          ctx.beginPath();
+          ctx.arc(c.x, c.y, c.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      });
+      if (activeCount > 0) {
+        requestAnimationFrame(updateConfetti);
+      } else {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        canvas.style.display = 'none';
+      }
+    }
+
+    function hexToRgb(hex) {
+      hex = hex.replace('#', '');
+      const bigint = parseInt(hex, 16);
+      const r = (bigint >> 16) & 255;
+      const g = (bigint >> 8) & 255;
+      const b = bigint & 255;
+      return `${r},${g},${b}`;
+    }
+
+    // Başlat
+    createConfetti();
+    updateConfetti();
+  </script>
 
 </body>
 </html>
