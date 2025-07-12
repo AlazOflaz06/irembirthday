@@ -5,85 +5,283 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>İrem'in Doğum Günü</title>
 <style>
-  html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
   body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Dikey ortala */
-    align-items: center;     /* Yatay ortala */
+    font-family: 'Comic Sans MS', cursive;
     text-align: center;
-    font-family: Arial, sans-serif;
     background: url('https://i.pinimg.com/originals/31/c5/03/31c503e8a4a8205fdc2bf0a76374507e.jpg') no-repeat center center fixed;
     background-size: cover;
-    color: white;
+    color: #fff;
     padding: 20px;
-    box-sizing: border-box;
-    overflow-y: auto; /* Taşmayı engeller */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
     text-shadow: 2px 2px 4px #000;
-    min-height: 100vh;
-  }
-  .logo, h1, .message, .foto {
-    margin: 10px 0;
   }
   .logo {
-    font-size: 28px;
-    color: #00e5ff;
-    text-shadow: 0 0 12px #00e5ff;
+    font-size: 50px;
+    color: #ff4081;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #fff;
   }
   h1 {
-    font-size: 2.5rem;
-    margin: 0 0 15px;
     color: #ffeb3b;
+    font-size: 2.5rem;
+    margin: 10px 0 20px;
     text-shadow: 3px 3px 0 #ff4081;
   }
+  .message {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 20px;
+    margin: 20px auto;
+    max-width: 80%;
+    font-size: 1.3rem;
+    line-height: 1.6;
+  }
   .foto {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     border: 5px solid #ffeb3b;
-    box-shadow: 0 0 20px #ff4081;
+    margin: 20px auto;
     object-fit: cover;
+    box-shadow: 0 0 20px #ff4081;
     cursor: pointer;
     transition: transform 0.3s ease;
   }
   .foto:hover {
     transform: scale(1.05);
   }
-  .message {
-    max-width: 80%;
-    background: rgba(0,0,0,0.7);
-    border-radius: 20px;
-    padding: 25px;
-    font-size: 1.3rem;
-    line-height: 1.6;
+  #musicControl {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: rgba(0,0,0,0.6);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #fff;
+    box-shadow: 0 0 12px #ff4081;
+    z-index: 10000;
   }
-  /* Responsive küçültme */
-  @media (max-width: 480px) {
-    .foto {
-      width: 140px;
-      height: 140px;
-    }
+  #musicControl:hover {
+    background: rgba(0,0,0,0.9);
+  }
+  /* Mum efekti */
+  #mum {
+    position: fixed;
+    top: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 50px;
+    background: #fff3e0;
+    border-radius: 5px;
+    box-shadow: 0 0 15px 5px #ffca28;
+    z-index: 10000;
+  }
+  #mumAlev {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 25px;
+    background: radial-gradient(circle at center, #ffeb3b 0%, #ff6f00 60%, transparent 80%);
+    border-radius: 50% 50% 50% 50%;
+    filter: drop-shadow(0 0 5px #ffb300);
+    animation: alevYanar 1.5s infinite alternate ease-in-out;
+  }
+  @keyframes alevYanar {
+    0% { transform: translateX(-50%) translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateX(-50%) translateY(-5px) scale(1.1); opacity: 0.7; }
+  }
+  /* Kayan yazı */
+  #kayanYazi {
+    position: fixed;
+    bottom: 0; left: 100%;
+    white-space: nowrap;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    background: rgba(255, 64, 129, 0.85);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 20px #ff4081;
+    animation: kaydir 15s linear infinite;
+    z-index: 10000;
+  }
+  @keyframes kaydir {
+    0% { left: 100%; }
+    100% { left: -100%; }
+  }
+  /* Hediye butonu */
+  #hediyeBtn {
+    position: fixed;
+    bottom: 60px;
+    right: 15px;
+    background: #ff4081;
+    border: none;
+    padding: 15px 25px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #ff4081;
+    z-index: 10000;
+    transition: background 0.3s;
+  }
+  #hediyeBtn:hover {
+    background: #e50064;
+  }
+  /* Balon animasyonu */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+  }
+  .balon {
+    position: fixed;
+    font-size: 60px;
+    animation: float 3s ease-in-out infinite;
+    pointer-events: none;
+    user-select: none;
+    z-index: 9999;
+  }
+  /* Konfeti canvas */
+  #confetti {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9998;
   }
 </style>
 </head>
 <body>
 
-<div class="logo">Tasarlayan Alaz Oflaz</div>
+  <div class="logo">❤️ İ</div>
 
-<h1>🎉 İrem, Kardeşim Doğum Günün Kutlu Olsun! 🎉</h1>
+  <h1>🎉 İrem, Kardeşim Doğum Günün Kutlu Olsun! 🎉</h1>
 
-<img src="https://i.imgur.com/mUg6G6Y.jpeg" alt="İrem" class="foto" id="foto">
+  <img src="https://i.imgur.com/mUg6G6Y.jpeg" alt="İrem" class="foto" id="foto">
 
-<div class="message">
-  <p>Bu doğum gününde yanında olamadım ama</p>
-  <p><strong>bir sonrakinde emin ol ki yanına gelip</strong></p>
-  <p><strong>beraber kutlayacağız!</strong></p>
-  <p>Seni çok seviyorum, iyi ki doğdun, iyi ki varsın! ❤️</p>
-</div>
+  <div class="message">
+    <p>Bu doğum gününde yanında olamadım ama</p>
+    <p><strong>bir sonrakinde emin ol ki yanına gelip</strong></p>
+    <p><strong>beraber kutlayacağız!</strong></p>
+    <p>Seni çok seviyorum, iyi ki doğdun, iyi ki varsın! ❤️</p>
+  </div>
+
+  <!-- Mum -->
+  <div id="mum">
+    <div id="mumAlev"></div>
+  </div>
+
+  <!-- Kayan yazı -->
+  <div id="kayanYazi">İrem’in doğum günü kutlu olsun! Seni çok seviyoruz! 🎂🎁🎈</div>
+
+  <!-- Müzik kontrol -->
+  <button id="musicControl">Müziği Kapat</button>
+
+  <!-- Hediye Butonu -->
+  <button id="hediyeBtn" onclick="alert('İrem’e harika bir hediye seçtin! 🎁')">İreme Hediye 🎁</button>
+
+  <!-- Konfeti -->
+  <canvas id="confetti"></canvas>
+
+  <audio id="muzik" autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg" />
+  </audio>
+
+<script>
+  // Balon Yağmuru
+  setInterval(() => {
+    const balon = document.createElement('div');
+    balon.className = 'balon';
+    balon.style.left = Math.random() * window.innerWidth + 'px';
+    balon.style.fontSize = (Math.random() * 30 + 20) + 'px';
+    balon.textContent = '🎈';
+    document.body.appendChild(balon);
+
+    let pos = window.innerHeight;
+    const fly = setInterval(() => {
+      pos -= 2;
+      balon.style.top = pos + 'px';
+      if (pos < -100) {
+        clearInterval(fly);
+        balon.remove();
+      }
+    }, 50);
+  }, 300);
+
+  // Müzik kontrol
+  const muzik = document.getElementById('muzik');
+  const musicControl = document.getElementById('musicControl');
+  let muzikCalisiyor = true;
+  musicControl.addEventListener('click', () => {
+    if (muzikCalisiyor) {
+      muzik.pause();
+      musicControl.textContent = "Müziği Aç";
+      muzikCalisiyor = false;
+    } else {
+      muzik.play();
+      musicControl.textContent = "Müziği Kapat";
+      muzikCalisiyor = true;
+    }
+  });
+
+  // Konfeti efekti
+  const canvas = document.getElementById('confetti');
+  const ctx = canvas.getContext('2d');
+  let pieces = [];
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  function createPiece() {
+    return {
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height - canvas.height,
+      size: Math.random() * 8 + 4,
+      color: `hsl(${Math.floor(Math.random() * 360)}, 100%, 60%)`,
+      speed: Math.random() * 3 + 2,
+      angle: Math.random() * 360
+    };
+  }
+
+  for (let i = 0; i < 150; i++) {
+    pieces.push(createPiece());
+  }
+
+  function update() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let piece of pieces) {
+      ctx.beginPath();
+      ctx.fillStyle = piece.color;
+      ctx.arc(piece.x, piece.y, piece.size, 0, 2 * Math.PI);
+      ctx.fill();
+
+      piece.y += piece.speed;
+      piece.angle += 2;
+      if (piece.y > canvas.height) {
+        piece.y = -10;
+        piece.x = Math.random() * canvas.width;
+      }
+    }
+    requestAnimationFrame(update);
+  }
+  update();
+</script>
 
 </body>
 </html>
