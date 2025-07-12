@@ -6,55 +6,71 @@
 <title>İrem'in Doğum Günü</title>
 <style>
   body {
-    font-family: Arial, sans-serif; /* Normal yazı tipi */
+    font-family: Arial, sans-serif;
     text-align: center;
     background: url('https://i.pinimg.com/originals/31/c5/03/31c503e8a4a8205fdc2bf0a76374507e.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #fff;
-    padding: 20px;
-    height: 100vh;
+    padding: 10px 15px;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    text-shadow: 2px 2px 4px #000;
+    text-shadow: 1.5px 1.5px 3px #000;
+    margin: 0;
   }
   .logo {
-    font-size: 28px;
+    font-size: 22px;
     color: #fff;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   h1 {
     color: #ffeb3b;
-    font-size: 2.5rem;
-    margin: 10px 0 20px;
-    text-shadow: 3px 3px 0 #ff4081;
+    font-size: 1.8rem;
+    margin: 8px 0 15px;
+    text-shadow: 2px 2px 0 #ff4081;
   }
   .message {
     background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 20px;
-    margin: 20px auto;
-    max-width: 80%;
-    font-size: 1.3rem;
-    line-height: 1.6;
+    padding: 15px 20px;
+    border-radius: 15px;
+    margin: 15px auto;
+    max-width: 90%;
+    font-size: 1.1rem;
+    line-height: 1.4;
   }
   .foto {
-    width: 200px;
-    height: 200px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
-    border: 5px solid #ffeb3b;
-    margin: 20px auto;
+    border: 4px solid #ffeb3b;
+    margin: 15px auto;
     object-fit: cover;
-    box-shadow: 0 0 20px #ff4081;
+    box-shadow: 0 0 15px #ff4081;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.25s ease;
   }
   .foto:hover {
     transform: scale(1.05);
   }
-  /* Diğer CSS ve JavaScript aynı kalabilir */
+  @media (max-width: 480px) {
+    .foto {
+      width: 120px;
+      height: 120px;
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+    .logo {
+      font-size: 18px;
+    }
+    .message {
+      font-size: 1rem;
+      padding: 12px 15px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -71,8 +87,6 @@
     <p><strong>beraber kutlayacağız!</strong></p>
     <p>Seni çok seviyorum, iyi ki doğdun, iyi ki varsın! ❤️</p>
   </div>
-
-  <!-- Buraya balon, konfeti, mum, müzik ve hediye butonu kodlarını ekleyebilirsin -->
 
 </body>
 </html>
