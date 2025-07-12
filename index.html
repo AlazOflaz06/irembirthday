@@ -40,7 +40,7 @@
       max-width: 80%;
       font-size: 1.3rem;
       line-height: 1.6;
-      font-family: sans-serif; /* YAZI STİLİ DEĞİŞTİ */
+      font-family: Arial, sans-serif; /* Normal font oldu */
     }
     .foto {
       width: 200px;
@@ -135,7 +135,7 @@
           speedY: randomRange(-15, -5),
           gravity: 0.5,
           opacity: 1,
-          decay: randomRange(0.05, 0.1),
+          decay: randomRange(0.03, 0.05) // daha yavaş sönsün = 2-3 saniye
         });
       }
     }
@@ -159,8 +159,8 @@
       if (activeCount > 0) {
         requestAnimationFrame(updateConfetti);
       } else {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
         canvas.style.display = 'none';
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
       }
     }
 
@@ -173,7 +173,7 @@
       return `${r},${g},${b}`;
     }
 
-    // Başlat
+    // Konfeti başlat
     createConfetti();
     updateConfetti();
   </script>
